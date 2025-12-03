@@ -1,0 +1,3 @@
+<jenkins>
+  <!-- Configure job to run mvn test -->
+</jenkins>
