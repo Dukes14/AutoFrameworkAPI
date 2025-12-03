@@ -1,0 +1,7 @@
+*.iml
+.idea
+.DS_Store
+venv/
+.target/
+node_modules/
+allure-results/
