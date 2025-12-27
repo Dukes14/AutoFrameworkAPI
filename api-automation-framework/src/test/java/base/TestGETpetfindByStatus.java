@@ -1,0 +1,10 @@
+[
+  {
+    "filename": "TestBase.java",
+    "content": "package base;\nimport io.restassured.RestAssured;\nimport org.testng.annotations.BeforeClass;\npublic class TestBase { @BeforeClass public void setup(){ RestAssured.useRelaxedHTTPSValidation(); } }"
+  },
+  {
+    "filename": "PetFindByStatusTest.java",
+    "content": "import base.TestBase;\nimport io.restassured.response.Response;\nimport org.testng.annotations.Test;\nimport static io.restassured.RestAssured.given;\nimport static org.testng.Assert.assertEquals;\n\npublic class PetFindByStatusTest extends TestBase {\n\n    @Test\n    public void testFindByStatus() {\n        String status = \"available\";\n        Response response = given()\n                .queryParam(\"status\", status)\n                .when()\n                .get(\"/pet/findByStatus\")\n                .then()\n                .extract().response();\n\n        assertEquals(response.getStatusCode(), 200);\n        // assert response.json().get(\"id\") != null;\n        // assert \"name\" in response.json();\n    }\n\n    @Test\n    public void testFindByStatusPending() {\n        String status = \"pending\";\n        Response response = given()\n                .queryParam(\"status\", status)\n                .when()\n                .get(\"/pet/findByStatus\")\n                .then()\n                .extract().response();\n\n        assertEquals(response.getStatusCode(), 200);\n        // assert response.json().get(\"id\") != null;\n        // assert \"name\" in response.json();\n    }\n\n    @Test\n    public void testFindByStatusSold() {\n        String status = \"sold\";\n        Response response = given()\n                .queryParam(\"status\", status)\n                .when()\n                .get(\"/pet/findByStatus\")\n                .then()\n                .extract().response();\n\n        assertEquals(response.getStatusCode(), 200);\n        // assert response.json().get(\"id\") != null;\n        // assert \"name\" in response.json();\n    }\n\n}"
+  }
+]
