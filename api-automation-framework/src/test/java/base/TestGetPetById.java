@@ -1,6 +1,10 @@
+package base;
+
 import base.TestBase;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
@@ -13,7 +17,7 @@ public class TestGetPetById extends TestBase {
         Response response = given()
                 .pathParam("petId", petId)
                 .when()
-                .get("/pet/{petId}");
+                .get(baseURI +"/pet/{petId}");
 
         assertEquals(response.getStatusCode(), 200);
 

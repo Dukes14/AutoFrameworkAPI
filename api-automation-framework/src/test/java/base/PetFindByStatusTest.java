@@ -1,6 +1,10 @@
+package base;
+
 import base.TestBase;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+
+import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 import static org.testng.Assert.assertEquals;
 
@@ -13,7 +17,7 @@ public class PetFindByStatusTest extends TestBase {
         Response response = given()
                 .queryParam("status", status)
                 .when()
-                .get("/pet/findByStatus")
+                .get(baseURI + "/pet/findByStatus")
                 .then()
                 .extract()
                 .response();
