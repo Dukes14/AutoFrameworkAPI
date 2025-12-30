@@ -26,7 +26,8 @@ pipeline {
     post {
         always {
             dir('api-automation-framework') {
-                archiveArtifacts artifacts: '**/target/*.xml', fingerprint: true
+                archiveArtifacts artifacts: 'TestReport/ExtentReport.html',
+                                         fingerprint: true
             }
         }
         success {

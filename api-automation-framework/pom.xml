@@ -47,6 +47,12 @@
                     <includes>
                         <include>*.java</include>
                     </includes>
+                    <properties>
+                        <property>
+                            <name>listener</name>
+                            <value>base.ExtentReportListener</value>
+                        </property>
+                    </properties>
                 </configuration>
             </plugin>
         </plugins>
