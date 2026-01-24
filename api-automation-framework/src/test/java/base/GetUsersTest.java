@@ -1,0 +1,4 @@
+{
+  "filename": "GetUsersTest.java",
+  "content": "package base;\n\nimport base.TestBase;\nimport io.restassured.response.Response;\nimport org.testng.annotations.Test;\n\nimport static io.restassured.RestAssured.baseURI;\nimport static io.restassured.RestAssured.given;\nimport static org.testng.Assert.assertEquals;\n\npublic class GetUsersTest extends TestBase {\n\n    @Test\n    public void testGetUsers() {\n\n        Response response = given()\n                .when()\n                .get(baseURI + \"/users\")\n                .then()\n                .extract().response();\n\n        assertEquals(response.getStatusCode(), 200);\n        // assert response.json().get(\"id\") != null;\n        // assert response.json().get(\"name\") != null;\n    }\n}\n"
+}
