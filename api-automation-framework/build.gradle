@@ -1,0 +1,39 @@
+plugins {id 'java'}
+                        ext {
+    // !! CHANGE THIS to the desired version, e.g., '1.4.1' or the latest version !!
+    karateVersion = '1.4.1' 
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation 'com.intuit.karate:karate-junit5:1.4.0'
+    implementation 'org.json:json:20220320'
+    implementation 'net.masterthought:cucumber-reporting:5.7.2'
+    implementation 'org.apache.commons:commons-lang3:3.0'
+    implementation 'com.microsoft.playwright:playwright:1.35.1'
+    implementation 'com.apple.ist.idms:TokenUtils:FY23R9'
+    testImplementation 'com.sun.mail:jakarta.mail:2.0.1'
+    testImplementation 'com.sun.activation:jakarta.activation:2.0.1'
+}
+
+sourceSets {
+    test {
+        resources {
+            // This ensures .feature files in src/test/java are treated as resources
+            srcDir file('src/test/java') 
+            exclude '**/*.java'
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    // Pass system properties like 'karate.options' and 'karate.env' from command line
+    systemProperty "karate.options", System.properties.getProperty("karate.options")
+    systemProperty "karate.env", System.properties.getProperty("karate.env")
+    outputs.upToDateWhen { false } // ensures tests always run
+}
